@@ -1,0 +1,32 @@
+class P2 {
+    int bSearch(int arr[], int left, int right, int x)
+    {
+        if (right >= left) {
+            int mid = left + (right - left) / 2;
+ 
+            if (arr[mid] == x)
+                return mid;
+ 
+            if (arr[mid] > x)
+                return bSearch(arr, left, mid - 1, x);
+ 
+            return bSearch(arr, mid + 1, right, x);
+        }
+ 
+        return -1;
+    }
+ 
+    public static void main(String args[])
+    {
+        P2 ob = new P2();
+        int arr[] = { 2, 5, 8, 32, 75 };
+        int n = arr.length;
+        int x = 10;
+        int result = ob.bSearch(arr, 0, n - 1, x);
+        if (result == -1)
+            System.out.println("Element not present");
+        else
+            System.out.println("Elements found at index "
+                               + result);
+    }
+}
